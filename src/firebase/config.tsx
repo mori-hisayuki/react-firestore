@@ -1,4 +1,4 @@
-export const firebaseConfig = {
+export const FIREBASE_CONFIG = {
     apiKey: "AIzaSyAHJ4FrHRTwLWZa5FNILVH-FDMkI1ayVTw",
     authDomain: "react-chat-d5d83.firebaseapp.com",
     databaseURL: "https://react-chat-d5d83.firebaseio.com",

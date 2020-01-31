@@ -1,8 +1,17 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { firestore } from "./firebase/index";
 
 const App: React.FC = () => {
+
+  const docRef = firestore.collection("sample-store").doc("testDoc");
+  docRef.get().then( doc => {
+    console.log("Success: Document has written");
+    console.log(doc.data());
+  })
+
+
   return (
     <div className="App">
       <header className="App-header">
@@ -16,7 +25,7 @@ const App: React.FC = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Learn React aaa
         </a>
       </header>
     </div>
