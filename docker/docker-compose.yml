@@ -12,11 +12,11 @@ services:
         target: /home/workspace
     command: sh -c "yarn start"
     networks:
-      - docknet
+      - react-net
     ports:
       - "3000:3000"
 
 
 networks:
-  docknet:
+  react-net:
     external: true
