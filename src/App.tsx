@@ -1,16 +1,49 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { firestore } from "./firebase/index";
+import { FireBase } from "./firebase/index";
 
 const App: React.FC = () => {
 
-  const docRef = firestore.collection("sample-store").doc("testDoc");
+  // 参照系
+  const docRef = FireBase.instance.firestore.collection("sample-store").doc("testDoc");
   docRef.get().then( doc => {
     console.log("Success: Document has written");
     console.log(doc.data());
   })
 
+  //登録系
+  FireBase.instance.firestore
+    .collection("users")
+    .add({
+      country: "Japan",
+      name: "dummyUser1"
+    })
+    .then(() => {
+      console.log("Success: Document has written");
+    })
+    .catch(error => {
+      console.error("Error writing document: ", error);
+    });
+
+  //更新系
+  FireBase.instance.firestore
+      .collection("users")
+      .doc("dummy_user_1")
+      .set({
+        country: "Japan",
+        name: "dummyUser2",
+        testcollection: [
+          { item: "a" },
+          {item: "b"}
+        ]
+      })
+      .then(() => {
+        console.log("Success: Document has written");
+      })
+      .catch(error => {
+        console.error("Error writing document: ", error);
+      });
 
   return (
     <div className="App">
